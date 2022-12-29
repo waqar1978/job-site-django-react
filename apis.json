@@ -1,0 +1,1135 @@
+{
+	"info": {
+		"_postman_id": "6056597f-ffae-4f43-93f1-19f4b7ca75be",
+		"name": "Job Portal - Sawaiz Mirza",
+		"description": "This collection will have all the REST APIs used in the job portal project.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Create New User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Demo\",\r\n    \"email\": \"demouser@tmpbox.net\",\r\n    \"type\": \"user\",\r\n    \"password\": \"Password11@@##\",\r\n    \"re_password\": \"Password11@@##\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/auth/users/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								""
+							]
+						},
+						"description": "API for creating new user.\r\n/auth/users/"
+					},
+					"response": []
+				},
+				{
+					"name": "Activate Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": \"OA\",\r\n    \"token\": \"aicf0g-e67effc5c0c0c2d2b83887e201a6dbaa\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/auth/users/activation/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"activation",
+								""
+							]
+						},
+						"description": "API for account activateion.\r\n/auth/users/activation/"
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"demouser@tmpbox.net\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/auth/users/reset_password/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"reset_password",
+								""
+							]
+						},
+						"description": "API request for resetting password.\r\n/auth/users/reset_password/"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": \"OA\",\r\n    \"token\": \"aicl9i-1f252dc1b631f84d9df851f9ef9fe96a\",\r\n    \"new_password\": \"Admin11@@##\",\r\n    \"re_new_password\": \"Admin11@@##\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/auth/users/reset_password_confirm/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"reset_password_confirm",
+								""
+							]
+						},
+						"description": "API request for resetting and confirm new user password.\r\n/auth/users/reset_password_confirm/"
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"demouser@tmpbox.net\",\r\n    \"password\": \"Shary11@@##\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/auth/jwt/create/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"jwt",
+								"create",
+								""
+							]
+						},
+						"description": "API request for login the user.\r\n/auth/jwt/create/"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEzODA3Njk4LCJqdGkiOiI0ZTE0Zjk0NmY1MGY0OWEwOWM1MDI0Y2M5M2JkOWIyNCIsInVzZXJfaWQiOjh9.ahmTyLtMmL1mL_2-VKlEFiqI8iF6d5h3A-aS3kg54yE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"current_password\": \"Admin11@@##\",\r\n    \"new_password\": \"Shary11@@##\",\r\n    \"re_new_password\": \"Shary11@@##\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/auth/users/set_password/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"set_password",
+								""
+							]
+						},
+						"description": "API request for updating user password.\r\n/auth/users/set_password/"
+					},
+					"response": []
+				},
+				{
+					"name": "Load User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDg5MzEzLCJqdGkiOiJhNjJhZTRjNjIxNzI0YmQwOGFlMGJjM2E0YzBmMmZkZSIsInVzZXJfaWQiOjh9.oTloT6cUhoC-mulkdIRGWHrj9EICS_tJOX7oVPbCpfs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/auth/users/me/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"me",
+								""
+							]
+						},
+						"description": "API request to load logged in user.\r\n/auth/users/me/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profiles",
+			"item": [
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Add and Get Profiles",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTUyMDg2LCJqdGkiOiJiZTE2OTY2YjI5ZGY0ZWMzYTQ2MjMzM2E2MDc1N2ZlYyIsInVzZXJfaWQiOjh9.l_FJKDotrNqrnzLx9RpG78EQSUCvvoXggSbl6ZxNIUw",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"first_name\": \"Shaheryar\",\r\n    \"last_name\": \"Malik\",\r\n    \"country\": \"Pakistan\",\r\n    \"phone\": \"+923457687321\",\r\n    \"bio\": \"I am Shaheryar Yousaf, a fullstack developer from Pakistan.\",\r\n    \"github_link\": \"https://github.com\",\r\n    \"linkedin_link\": \"https://linkedin.com\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/profile",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"profile"
+									]
+								},
+								"description": "/user/profile\r\n - Add profile Info\r\n - Get All Profiles"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Profile, Update and Delete",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTUyMDg2LCJqdGkiOiJiZTE2OTY2YjI5ZGY0ZWMzYTQ2MjMzM2E2MDc1N2ZlYyIsInVzZXJfaWQiOjh9.l_FJKDotrNqrnzLx9RpG78EQSUCvvoXggSbl6ZxNIUw",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"first_name\": \"Shaheryar\",\r\n    \"last_name\": \"Malik\",\r\n    \"country\": \"Pakistan\",\r\n    \"phone\": \"+923457687321\",\r\n    \"bio\": \"I am Shaheryar Yousaf, a fullstack developer from Pakistan.\",\r\n    \"github_link\": \"https://github.com\",\r\n    \"linkedin_link\": \"https://linkedin.com\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/profile/6",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"profile",
+										"6"
+									]
+								},
+								"description": "/user/profile/<int:pk>\r\n - Get Single Profile\r\n - Delete Single Profile\r\n - Update Single Profile"
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mjk3Mzg3LCJqdGkiOiI1YWU1YzYyOGM0YjU0NmI3YmEyNDk1ZDk4ZDM3MDY2YyIsInVzZXJfaWQiOjh9.Gb4rFx-YIYup-F9GUJb5sD4x9wbWrv_EaUsZhJWpbg4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/user/list",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"list"
+									]
+								},
+								"description": "GET /user/list"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single User",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MzE0NjA5LCJqdGkiOiI4YjZmOWUwOTNkMWI0ZjZkOTFkY2NlZDUyMzJmOTIzNiIsInVzZXJfaWQiOjh9.UeajgDJkS34YHHHU7xnvDiny8LYPAZhFDK0fMHsM_jA",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/user/list/8",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"list",
+										"8"
+									]
+								},
+								"description": "GET /user/list/8"
+							},
+							"response": []
+						}
+					],
+					"description": "This folder contains all APIs regarding user profile information."
+				},
+				{
+					"name": "Education",
+					"item": [
+						{
+							"name": "Add and Get Education",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTU0MjU5LCJqdGkiOiI1MTMyMTA5OWM0YTk0OWM0YjM2YWVlZTZmMWIzOTdjYiIsInVzZXJfaWQiOjh9.t3uwEy1Z6KgFZ2QHYpxfj_kS2WJgVMz_kKVNUFfmS8g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"degree\": \"BA\",\r\n    \"college\": \"GCUF\",\r\n    \"start_date\": \"2016-02-02\",\r\n    \"end_date\": \"2020-02-02\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/education",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"education"
+									]
+								},
+								"description": ".user/education/\r\n - Add education\r\n - Get all educations"
+							},
+							"response": []
+						},
+						{
+							"name": "Get, Update and Delete Single Education",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTU0MjU5LCJqdGkiOiI1MTMyMTA5OWM0YTk0OWM0YjM2YWVlZTZmMWIzOTdjYiIsInVzZXJfaWQiOjh9.t3uwEy1Z6KgFZ2QHYpxfj_kS2WJgVMz_kKVNUFfmS8g",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"degree\": \"BA\",\r\n    \"college\": \"GCUF\",\r\n    \"start_date\": \"2016-02-02\",\r\n    \"end_date\": \"2020-02-02\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/education/2",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"education",
+										"2"
+									]
+								},
+								"description": "/user/education/<int:pk>\r\n - Get Single Educaion\r\n - Delete Single Education\r\n - Update Single Education"
+							},
+							"response": []
+						}
+					],
+					"description": "This folder contains all APIs regarding user education information."
+				},
+				{
+					"name": "Availability",
+					"item": [
+						{
+							"name": "Add and Get all Availability",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTU0MjU5LCJqdGkiOiI1MTMyMTA5OWM0YTk0OWM0YjM2YWVlZTZmMWIzOTdjYiIsInVzZXJfaWQiOjh9.t3uwEy1Z6KgFZ2QHYpxfj_kS2WJgVMz_kKVNUFfmS8g",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"availability_type\": \"Pre FullTime\",\r\n    \"ready_to_start_in\": \"more than 1 month\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/availability",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"availability"
+									]
+								},
+								"description": "/user/availability \r\n - Add availability\r\n - Get availabilities"
+							},
+							"response": []
+						},
+						{
+							"name": "Get, Update and Delete Single Availability",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTU0MjU5LCJqdGkiOiI1MTMyMTA5OWM0YTk0OWM0YjM2YWVlZTZmMWIzOTdjYiIsInVzZXJfaWQiOjh9.t3uwEy1Z6KgFZ2QHYpxfj_kS2WJgVMz_kKVNUFfmS8g",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"availability_type\": \"Full Time\",\r\n    \"ready_to_start_in\": \"more than 1 month\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/availability/3",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"availability",
+										"3"
+									]
+								},
+								"description": "/user/availability/<int:pk>\r\n - Get single availability\r\n - Delete single availability\r\n - Update single availability"
+							},
+							"response": []
+						}
+					],
+					"description": "This folder contains all APIs regarding user availabilty information."
+				},
+				{
+					"name": "Experience",
+					"item": [
+						{
+							"name": "Add ane Get all experiences",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTU0MjU5LCJqdGkiOiI1MTMyMTA5OWM0YTk0OWM0YjM2YWVlZTZmMWIzOTdjYiIsInVzZXJfaWQiOjh9.t3uwEy1Z6KgFZ2QHYpxfj_kS2WJgVMz_kKVNUFfmS8g",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"years_of_experience\": 4,\r\n    \"years_of_remote_experience\": 3,\r\n    \"english_proficiency\": \"Basic\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/experience",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"experience"
+									]
+								},
+								"description": "/user/experience\r\n - Add new experience\r\n -  Get all experience"
+							},
+							"response": []
+						},
+						{
+							"name": "Get, Update and Delete Single Experience",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTU0MjU5LCJqdGkiOiI1MTMyMTA5OWM0YTk0OWM0YjM2YWVlZTZmMWIzOTdjYiIsInVzZXJfaWQiOjh9.t3uwEy1Z6KgFZ2QHYpxfj_kS2WJgVMz_kKVNUFfmS8g",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"years_of_experience\": 4,\r\n    \"years_of_remote_experience\": 3,\r\n    \"english_proficiency\": \"Basic\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/experience/2",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"experience",
+										"2"
+									]
+								},
+								"description": "/user/experience/<int:pk>\r\n - Get Single Experience\r\n - Delete Single Experience\r\n - Update Single Experience"
+							},
+							"response": []
+						}
+					],
+					"description": "This folder contains all APIs regarding user experience information."
+				},
+				{
+					"name": "Role & Salary",
+					"item": [
+						{
+							"name": "Add and Get Roles and Salaries",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTU0MjU5LCJqdGkiOiI1MTMyMTA5OWM0YTk0OWM0YjM2YWVlZTZmMWIzOTdjYiIsInVzZXJfaWQiOjh9.t3uwEy1Z6KgFZ2QHYpxfj_kS2WJgVMz_kKVNUFfmS8g",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"preferred_role\": \"Mobile\",\r\n    \"current_salary\": \"50000000\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/role",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"role"
+									]
+								},
+								"description": "/user/role\r\n - Add new job role\r\n - Get all job roles"
+							},
+							"response": []
+						},
+						{
+							"name": "Get, Delete and Update Single Role",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0MTU0MjU5LCJqdGkiOiI1MTMyMTA5OWM0YTk0OWM0YjM2YWVlZTZmMWIzOTdjYiIsInVzZXJfaWQiOjh9.t3uwEy1Z6KgFZ2QHYpxfj_kS2WJgVMz_kKVNUFfmS8g",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 8,\r\n    \"preferred_role\": \"DevOps\",\r\n    \"current_salary\": \"50000000\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/role/3",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"role",
+										"3"
+									]
+								},
+								"description": "/user/role/<int:pk>\r\n - Get single role\r\n - Delete single role\r\n - Update single role"
+							},
+							"response": []
+						}
+					],
+					"description": "This folder contains all APIs regarding user Role & Salary information."
+				},
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "Add and Get Company Profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 1,\r\n    \"name\": \"Webbotic\",\r\n    \"about\": \"This is a tech company\",\r\n    \"phone\": \"+934568215\",\r\n    \"address\": \"USA\",\r\n    \"website\": \"http://example.com\",\r\n    \"linkedin_link\": \"https://linkedin.com\",\r\n    \"twitter_link\": \"https://twitter.com\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/company_profile",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"company_profile"
+									]
+								},
+								"description": "/user/company_profile\r\n - Add Company Profile\r\n - Get all company profiles"
+							},
+							"response": []
+						},
+						{
+							"name": "Get, Update and Delete Single Company Profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 1,\r\n    \"name\": \"Webbotic\",\r\n    \"about\": \"This is a tech company\",\r\n    \"phone\": \"+934568215\",\r\n    \"address\": \"USA\",\r\n    \"website\": \"http://example.com\",\r\n    \"linkedin_link\": \"https://linkedin.com\",\r\n    \"twitter_link\": \"https://twitter.com\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/company_profile/3",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"company_profile",
+										"3"
+									]
+								},
+								"description": "/user/company_profile/6\r\n - Get single company profile\r\n - Update single company profile\r\n - Delete single company profile"
+							},
+							"response": []
+						}
+					],
+					"description": "This folder contains all the APIs for the user company profile."
+				},
+				{
+					"name": "Skills",
+					"item": [
+						{
+							"name": "Get All Skills From Jobs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mjk3Mzg3LCJqdGkiOiI1YWU1YzYyOGM0YjU0NmI3YmEyNDk1ZDk4ZDM3MDY2YyIsInVzZXJfaWQiOjh9.Gb4rFx-YIYup-F9GUJb5sD4x9wbWrv_EaUsZhJWpbg4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/job/skills",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"job",
+										"skills"
+									]
+								},
+								"description": "{{URL}}/job/skills"
+							},
+							"response": []
+						},
+						{
+							"name": "Add New User Skills",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mjg4OTE1LCJqdGkiOiI5N2MyMDc4MDI3M2I0MTI2YjMyMTI2ZjdhZTNmMTRmNiIsInVzZXJfaWQiOjh9.AKD_2oRlSaclUjzHTYWUy5pPPZdd4AyFikTmkH-567c",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 9,\r\n    \"name\": \"NodeJS\",\r\n    \"rating\": 8\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/user/user_skills",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"user_skills"
+									]
+								},
+								"description": "POST /user/user_skills"
+							},
+							"response": []
+						},
+						{
+							"name": "Get User's All Skills",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mjg4OTE1LCJqdGkiOiI5N2MyMDc4MDI3M2I0MTI2YjMyMTI2ZjdhZTNmMTRmNiIsInVzZXJfaWQiOjh9.AKD_2oRlSaclUjzHTYWUy5pPPZdd4AyFikTmkH-567c",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/user/user_skills",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"user_skills"
+									]
+								},
+								"description": "GET /user/user_skills"
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Users Skills from Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mjk3Mzg3LCJqdGkiOiI1YWU1YzYyOGM0YjU0NmI3YmEyNDk1ZDk4ZDM3MDY2YyIsInVzZXJfaWQiOjh9.Gb4rFx-YIYup-F9GUJb5sD4x9wbWrv_EaUsZhJWpbg4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/user/user_skills/list",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"user",
+										"user_skills",
+										"list"
+									]
+								},
+								"description": "GET /user/user_skills/list"
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "This folder contains all APIs for the profiles.\r\n1. Profile\r\n2. Education\r\n3. Experience\r\n4. Availability\r\n5. Role and Salary"
+		},
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "Add and Get Jobs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0NDExOTQ1LCJqdGkiOiI0NGE1NDIyY2QwMDE0OGMzOWMwN2ZjMjE2YWNlNjcwYiIsInVzZXJfaWQiOjh9.GYisEI_cIi30UH_tpQ0P5WN1IEEfItnDMKb0wN2bgsI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": 8,\r\n    \"title\": \"New Software Engineer\",\r\n    \"description\": \"We are looking for a experienced Software Engineer for our company.\",\r\n    \"work_email\": \"demouser@tmpbox.nrt\",\r\n    \"hiring_needs\": \"Part Time\",\r\n    \"current_employees\": \"1-3\",\r\n    \"name\": \"Datawiz\",\r\n    \"phone\": \"0359815145\",\r\n    \"website\": \"https://example.com\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/job/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"job",
+								""
+							]
+						},
+						"description": "/job/\r\n - Add a new job\r\n - Get all jobs"
+					},
+					"response": []
+				},
+				{
+					"name": "Get, Update and Delete Single Job",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0Mzk3Nzc4LCJqdGkiOiJjYzQxNDlkNjZjZjY0Y2NmOGVkOTU2YzQ4N2I5YTA4NiIsInVzZXJfaWQiOjh9.7OiLP6PquTqWk-Gn4_g9RGGUCvJFkfO0MD5tDsN4UR8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/job/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"job",
+								"2"
+							]
+						},
+						"description": "/job/1\r\n - Get single job\r\n - Update single job\r\n - Delete single job"
+					},
+					"response": []
+				},
+				{
+					"name": "Add and Get Job Skills",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0NDA3MjA4LCJqdGkiOiI1ZDJmZjNlZWQwZDE0Zjg5YjQ5MmM2MTBmMGNkOWZhOSIsInVzZXJfaWQiOjh9.Vgj7Nwcc4xu09CdBjP5K5TlTTjyAKeXPs96Hf6IUzKo",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"job\": 4,\r\n    \"name\": \"Python\",\r\n    \"rating\": 8\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/job/skills",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"job",
+								"skills"
+							]
+						},
+						"description": "/job/skills\r\n- Add job skill\r\n- Get job skills"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Last added Job by a user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0NDExOTQ1LCJqdGkiOiI0NGE1NDIyY2QwMDE0OGMzOWMwN2ZjMjE2YWNlNjcwYiIsInVzZXJfaWQiOjh9.GYisEI_cIi30UH_tpQ0P5WN1IEEfItnDMKb0wN2bgsI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/job/last",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"job",
+								"last"
+							]
+						},
+						"description": "/job/last"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all the APIs for the company jobs."
+		},
+		{
+			"name": "Assessments",
+			"item": [
+				{
+					"name": "Get First Question",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MzY2MjU2LCJqdGkiOiIwYWVjYjIwYzg2ZjA0ZTAxOGM2NTQxMjEyYzViNGQ3YyIsInVzZXJfaWQiOjh9.nizju4gq1PB9quQ-TwI1p8VIkjoMYbIbwSQxU2RE0xI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/question/first",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"question",
+								"first"
+							]
+						},
+						"description": "GET /question/:id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Answers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MzkxNDYzLCJqdGkiOiJiNDYwZDllMTVkOGE0NDkxOTVjZmE0NDYxYjg0YTFlNSIsInVzZXJfaWQiOjh9.uUjDtNbLPc4DnKt6huO_oWQifeDH4cpRdGXKF2fwmzU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/question/answers",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"question",
+								"answers"
+							]
+						},
+						"description": "GET /question/answers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Next Question",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDg0ODM3LCJqdGkiOiJjZTI5ODEyZWQyMjQ0OTM5OGExZTlmZDlhZmExMDA4NCIsInVzZXJfaWQiOjh9.Is4LCipxrQcD-n5pWSSAvPgFpvWftMiX8Na0V_70fhg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/question/next/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"question",
+								"next",
+								"2"
+							]
+						},
+						"description": "GET /question/next/2"
+					},
+					"response": []
+				},
+				{
+					"name": "POST and Get Submitted answer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDg3Njg1LCJqdGkiOiIyN2YyOWFiNWQzOTk0ZjM4YjdkM2I5ZTQxNDgyOTdiMSIsInVzZXJfaWQiOjh9.krxPdGKe6rGn8lhKUU6dYgNOBFe0E7cQlIxA4NBRoGI",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": 8,\r\n    \"question\": 2,\r\n    \"answer\": 11\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/question/submit",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"question",
+								"submit"
+							]
+						},
+						"description": "POST /question/submit"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Questions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDk3OTUzLCJqdGkiOiI4N2ZiMjk3NzI3NTQ0ZmNlYTliZmViNzlhNzY3NzI5MyIsInVzZXJfaWQiOjh9.gGQLM3L9k8oT5GdXtGAv0Z0Vn4RNeMciwq9kTyJAi3U",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/question/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"question",
+								"all"
+							]
+						},
+						"description": "GET /question/all"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
